@@ -29,7 +29,7 @@ function SinglePizza({pizza}) {
         <PizzaStyles>
             <Link to={`/pizza/${pizza.slug.current}`}>
                 <h2>
-                    <span class="mark">{pizza.name}</span>
+                    <span className="mark">{pizza.name}</span>
                 </h2>
             </Link>
             <p>{pizza.toppings.map(topping => topping.name).join(', ')}</p>
