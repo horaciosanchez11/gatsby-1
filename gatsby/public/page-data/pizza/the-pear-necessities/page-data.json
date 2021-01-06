@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-templates-pizza-js","path":"/pizza/the-pear-necessities","result":{"errors":[{"message":"Variable \"$slug\" of required type \"String!\" was not provided.","locations":[{"line":11,"column":78}]}],"pageContext":{}},"staticQueryHashes":[]}
