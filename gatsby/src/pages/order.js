@@ -7,6 +7,8 @@ import calculatePizzaPrice from '../utils/calculatePizzaPrice';
 import formatMoney from '../utils/formatMoney';
 import OrderStyles from '../styles/OrderStyles';
 import MenuItemStyles from '../styles/MenuItemStyles';
+import usePizza from '../utils/usePizza';
+import PizzaOrder from '../components/PizzaOrder';
 
 export default function OrderPage( {data} ) {
     const pizzas = data.pizzas.nodes;
@@ -14,6 +16,10 @@ export default function OrderPage( {data} ) {
         name: '',
         email: ''
     })
+    const {order, addToOrder, removeFromOrder} = usePizza({
+        pizzas, 
+        inputs: values
+    });
 
     return (
         <>
@@ -36,7 +42,15 @@ export default function OrderPage( {data} ) {
                             </div>
                             <div>
                                 {['S', 'M', 'L'].map(size => (
-                                    <button key={size} type="button">{size} {formatMoney(calculatePizzaPrice(pizza.price, size))}</button>
+                                    <button 
+                                        key={size} 
+                                        onClick={() => addToOrder({
+                                            id: pizza.id,
+                                            size
+                                        })} 
+                                        type="button">
+                                            {size} {formatMoney(calculatePizzaPrice(pizza.price, size))}
+                                    </button>
                                 ))}
                             </div>
                         </MenuItemStyles>
@@ -44,6 +58,11 @@ export default function OrderPage( {data} ) {
                 </fieldset>
                 <fieldset className="order">
                     <legend>Order</legend>
+                    <PizzaOrder 
+                        order={order} 
+                        pizzas={pizzas}
+                        removeFromOrder={removeFromOrder}
+                    />
                 </fieldset>
             </OrderStyles>
         </>
