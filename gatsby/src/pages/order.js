@@ -15,7 +15,8 @@ export default function OrderPage( {data} ) {
     const pizzas = data.pizzas.nodes;
     const {values, updateValues} = useForm({
         name: '',
-        email: ''
+        email: '',
+        mapleSyrup: ''
     })
     const {order, addToOrder, removeFromOrder, error, loading, message, submitOrder} = usePizza({
         pizzas, 
@@ -34,7 +35,8 @@ export default function OrderPage( {data} ) {
                     <label htmlFor="name">Name</label>
                     <input type="text" name="name" value={values.name} onChange={updateValues}  />
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" value={values.email} onChange={updateValues} />
+                    <input type="email" name="email" id="email" value={values.email} onChange={updateValues} />
+                    <input className="mapleSyrup" type="email" name="mapleSyrup" id="mapleSyrup" value={values.mapleSyrup} onChange={updateValues} />
                 </fieldset>
                 <fieldset disabled={loading} className="menu">
                     <legend>Menu</legend>

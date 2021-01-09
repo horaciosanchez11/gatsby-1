@@ -37,8 +37,17 @@ function wait(ms = 0) {
 }
 
 exports.handler = async(event, context) => {
-    await wait(5000);
+    await wait(1000);
     const body = JSON.parse(event.body);
+
+    // check if they fill the honey pot field
+    if (body.mapleSyrup) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({message: 'Invalid user ERR 345'})
+        };
+    }
+
     // validate data coming in
     const requiredFields = ['email', 'name', 'order'];
     for (const field of requiredFields) {
