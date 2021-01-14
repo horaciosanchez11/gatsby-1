@@ -3,7 +3,7 @@ import React from 'react';
 export default function Footer() {
     return (
         <footer>
-            <p>Footer content</p>
+            <p className="center">&copy; Slicks Slices</p>
         </footer>
     );
 }
